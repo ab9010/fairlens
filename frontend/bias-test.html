@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fairness Lab — FairLens</title>
+<meta name="description" content="Load a dataset, choose a protected attribute and outcome, and run a live fairness test.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lab.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><span class="mark">Fair</span>Lens</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bias-test.html" class="active">Fairness Lab</a></li>
+      <li><a href="simulator.html">Simulator</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="bias-test.html" class="nav-cta">Test Your Dataset</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <section class="section-dark lab-hero">
+    <div class="container">
+      <p class="eyebrow">Fairness Lab</p>
+      <h1>Run a fairness test on real data</h1>
+      <p>Load the demo loan-approval dataset or upload your own CSV, then choose which column represents a protected attribute and which represents the outcome you want to check for disparity.</p>
+      <span class="tag" data-api-status>Checking backend…</span>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container lab-grid">
+
+      <!-- STEP 1: Dataset source -->
+      <div class="panel step-panel" id="step-source">
+        <span class="tag">Step 1</span>
+        <h3>Choose a dataset</h3>
+        <p>Start with the built-in synthetic dataset, or upload your own CSV file.</p>
+        <div class="btn-row">
+          <button id="btn-demo" class="btn btn-primary">Use Demo Dataset</button>
+          <label class="btn btn-outline" for="csv-upload" style="cursor:pointer;">Upload CSV
+            <input type="file" id="csv-upload" accept=".csv" class="visually-hidden">
+          </label>
+        </div>
+        <p id="source-status" class="status-msg" style="display:none; margin-top:16px;"></p>
+      </div>
+
+      <!-- STEP 2: Preview -->
+      <div class="panel step-panel" id="step-preview" hidden>
+        <span class="tag">Step 2</span>
+        <h3>Dataset preview</h3>
+        <div class="grid-3 preview-stats">
+          <div><span class="stat-label">Rows</span><span class="stat-value" id="stat-rows">—</span></div>
+          <div><span class="stat-label">Columns</span><span class="stat-value" id="stat-cols">—</span></div>
+          <div><span class="stat-label">Missing values</span><span class="stat-value" id="stat-missing">—</span></div>
+        </div>
+        <div class="table-scroll" style="margin-top:18px;">
+          <table class="data-table" id="preview-table">
+            <thead><tr id="preview-head"></tr></thead>
+            <tbody id="preview-body"></tbody>
+          </table>
+        </div>
+        <p style="margin-top:14px; font-size:0.85rem;" id="detected-cols"></p>
+      </div>
+
+      <!-- STEP 3: Column selection -->
+      <div class="panel step-panel" id="step-columns" hidden>
+        <span class="tag">Step 3</span>
+        <h3>Select attribute &amp; outcome</h3>
+        <div class="form-grid">
+          <label>Protected attribute
+            <select id="select-attr"></select>
+          </label>
+          <label>Outcome column
+            <select id="select-outcome"></select>
+          </label>
+          <label>Positive outcome value
+            <select id="select-positive"></select>
+          </label>
+        </div>
+        <p style="margin-top:10px; font-size:0.85rem; color:var(--text-dim-on-light);">Defaults to <code>gender</code> / <code>approved</code> / <code>Yes</code> for the demo dataset — change them to explore other columns.</p>
+        <div class="btn-row" style="margin-top:18px;">
+          <button id="btn-run" class="btn btn-primary" disabled>Run Fairness Test</button>
+        </div>
+        <p id="analyze-status" class="status-msg" style="display:none; margin-top:16px;"></p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FairLens — college social internship project.</span>
+      <span>Not a certified fairness or compliance tool.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/bias-test.js"></script>
+</body>
+</html>

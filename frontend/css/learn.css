@@ -1,0 +1,3 @@
+.bias-types .panel h3, .principle-grid .panel h3 { margin-top: 0; }
+.cta-simple { padding: clamp(48px, 7vw, 88px) 0; }
+.cta-simple h2 { margin-bottom: 24px; }

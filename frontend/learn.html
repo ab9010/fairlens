@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn — FairLens</title>
+<meta name="description" content="Plain-language explanations of AI ethics, bias types, and responsible AI principles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/learn.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><span class="mark">Fair</span>Lens</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bias-test.html">Fairness Lab</a></li>
+      <li><a href="simulator.html">Simulator</a></li>
+      <li><a href="learn.html" class="active">Learn</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="bias-test.html" class="nav-cta">Test Your Dataset</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <section class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Learn</p>
+      <h1>The vocabulary of AI ethics, in plain language</h1>
+      <p>Short, student-friendly explanations of the concepts behind FairLens — what bias is, where it comes from, and what it means to build AI responsibly.</p>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container grid-2">
+      <div>
+        <h2>AI Ethics</h2>
+        <p>AI ethics is the set of principles that guide how automated systems should be designed and used so they treat people fairly, respect their privacy, and stay accountable to the humans affected by their decisions.</p>
+      </div>
+      <div>
+        <h2>AI Bias</h2>
+        <p>AI bias is a systematic tendency for a model to produce different outcomes for different groups of people, in a way that isn't explained by legitimate differences in the data — often reflecting patterns baked in during data collection, labeling, or training.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container">
+      <p class="eyebrow">Why AI bias matters</p>
+      <h2>Small statistical gaps become real consequences</h2>
+      <p class="wide">A 10-point gap in a loan approval rate might look like a rounding error on a spreadsheet, but multiplied across thousands of applicants it means real people denied credit, jobs, or care for reasons that have nothing to do with their qualifications. Because automated systems operate at scale, an unexamined bias doesn't stay small — it gets applied consistently to everyone who passes through the system.</p>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Where bias comes from</p>
+      <h2>Four common sources of bias</h2>
+      <div class="grid-2 bias-types">
+        <div class="panel"><h3>Dataset bias</h3><p>The training data itself doesn't represent the population a system will be used on — for example, a medical model trained mostly on one demographic.</p></div>
+        <div class="panel"><h3>Historical bias</h3><p>Even a perfectly collected dataset can encode bias if it reflects decisions made under discriminatory past conditions, like historical lending or hiring patterns.</p></div>
+        <div class="panel"><h3>Representation bias</h3><p>Some groups are proportionally under- or over-represented in the data, which makes the model less reliable — or entirely blind — for underrepresented groups.</p></div>
+        <div class="panel"><h3>Measurement bias</h3><p>The features or labels used as a stand-in for what you actually care about measure different things across groups, for example using zip code as a rough stand-in for risk.</p></div>
+      </div>
+      <div class="panel" style="margin-top: 24px;"><h3>Algorithmic bias</h3><p>Bias that's introduced or amplified by the model or algorithm itself — through how it weighs features, optimizes for accuracy, or sets decision thresholds — even when the input data looks reasonable at first glance.</p></div>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container">
+      <p class="eyebrow">Responsible AI</p>
+      <h2>Six principles that guide how FairLens thinks about fairness</h2>
+      <div class="grid-3 principle-grid">
+        <div class="panel"><h3>Fairness</h3><p>Outcomes shouldn't systematically favor or disadvantage a group without a legitimate, disclosed reason.</p></div>
+        <div class="panel"><h3>Transparency</h3><p>How a system reaches a decision should be understandable and open to inspection, not a black box.</p></div>
+        <div class="panel"><h3>Accountability</h3><p>Someone is responsible for a system's outcomes and has a process for correcting problems when they're found.</p></div>
+        <div class="panel"><h3>Privacy</h3><p>Personal data should be collected, stored, and used with the consent and protection people expect.</p></div>
+        <div class="panel"><h3>Safety</h3><p>A system should be tested for how it fails, not just how it performs when everything goes right.</p></div>
+        <div class="panel"><h3>Explainability</h3><p>The people affected by a decision should be able to get a clear, honest reason for it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container grid-2">
+      <div>
+        <p class="eyebrow">Fairness score formula</p>
+        <h2>How the 0–100 score is calculated</h2>
+        <p>FairLens starts every dataset at 100 points, then subtracts a penalty for the selection rate gap between groups (up to 60 points) and a penalty for how far the disparate impact ratio falls below the common 0.80 "four-fifths" reference line (up to 40 points). The formula is intentionally simple and disclosed in full so it's easy to audit.</p>
+        <p>This is an educational composite score, not an official scientific, legal, or regulatory standard.</p>
+      </div>
+      <div class="panel">
+        <h3>Score bands</h3>
+        <dl class="field-list">
+          <dt>80 – 100</dt><dd>Relatively Fair</dd>
+          <dt>60 – 79</dt><dd>Moderate Disparity</dd>
+          <dt>40 – 59</dt><dd>High Disparity</dd>
+          <dt>0 – 39</dt><dd>Severe Disparity</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-light cta-simple">
+    <div class="container" style="text-align:center;">
+      <h2>Ready to see these concepts in a real dataset?</h2>
+      <a href="bias-test.html" class="btn btn-primary">Open the Fairness Lab</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FairLens — college social internship project.</span>
+      <span>Not a certified fairness or compliance tool.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
