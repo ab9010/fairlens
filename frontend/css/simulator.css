@@ -1,0 +1,19 @@
+.sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+@media (max-width: 860px) { .sim-grid { grid-template-columns: 1fr; } }
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--coral-500);
+  margin-top: 10px;
+}
+.slider-value { font-family: var(--font-mono); font-size: 1.6rem; margin-top: 6px; }
+
+.sim-status-band {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  padding: 10px 14px;
+  border-left: 3px solid var(--coral-500);
+  background: rgba(232,89,58,0.08);
+  margin-bottom: 18px;
+}
+.sim-status-band.ok { border-color: var(--lime-500); background: rgba(185,206,46,0.10); }

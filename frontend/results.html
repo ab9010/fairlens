@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results Dashboard — FairLens</title>
+<meta name="description" content="Fairness score, group metrics, and charts from your fairness test.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/results.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><span class="mark">Fair</span>Lens</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bias-test.html">Fairness Lab</a></li>
+      <li><a href="simulator.html">Simulator</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="bias-test.html" class="nav-cta">Test Your Dataset</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <div id="no-result-msg" class="container" style="padding: 80px 0;" hidden>
+    <p class="eyebrow">No results yet</p>
+    <h2>Run a fairness test first</h2>
+    <p>This page reads the result of your last test. Head to the Fairness Lab to load a dataset and run one.</p>
+    <a href="bias-test.html" class="btn btn-primary">Go to Fairness Lab</a>
+  </div>
+
+  <div id="results-content" hidden>
+
+    <section class="section-dark score-hero">
+      <div class="container score-hero-grid">
+        <div>
+          <p class="eyebrow" id="dataset-name">Dataset</p>
+          <h1>Fairness Score</h1>
+          <div class="score-big" id="score-value">—</div>
+          <p class="score-level" id="score-level">—</p>
+          <div class="gauge-bar"><span id="score-bar" style="width:0%"></span></div>
+          <div class="btn-row" style="margin-top: 22px;">
+            <button id="btn-download" class="btn btn-primary">Download Fairness Report</button>
+            <a href="bias-test.html" class="btn btn-outline">Run another test</a>
+          </div>
+        </div>
+        <dl class="config-list" id="config-list"></dl>
+      </div>
+    </section>
+
+    <section class="section-light">
+      <div class="container">
+        <p class="eyebrow">Metrics</p>
+        <h2>Group-wise fairness metrics</h2>
+        <div class="grid-3 metric-grid" id="metric-cards"></div>
+
+        <div class="table-scroll" style="margin-top: 32px;">
+          <table class="data-table" id="group-table">
+            <thead><tr><th>Group</th><th>Rows</th><th>Positive outcomes</th><th>Selection rate</th></tr></thead>
+            <tbody id="group-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light chart-section">
+      <div class="container">
+        <p class="eyebrow">Charts</p>
+        <h2>Visualizing the disparity</h2>
+        <div class="grid-2 chart-grid">
+          <div class="panel"><h3>Approval rate by group</h3><canvas id="chart-approval-rate"></canvas></div>
+          <div class="panel"><h3>Group distribution</h3><canvas id="chart-distribution"></canvas></div>
+          <div class="panel"><h3>Approved vs. rejected by group</h3><canvas id="chart-stacked"></canvas></div>
+          <div class="panel"><h3>Fairness metric comparison</h3><canvas id="chart-metrics"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-dark">
+      <div class="container grid-2">
+        <div>
+          <p class="eyebrow">Why was bias detected?</p>
+          <h2>Reading the result</h2>
+          <p id="explanation-text"></p>
+        </div>
+        <div class="panel">
+          <h3>Fairness recommendations</h3>
+          <ul id="recommendations-list" class="rec-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-light">
+      <div class="container">
+        <p class="eyebrow">Educational fairness mitigation simulation</p>
+        <h2>Before vs. after a simple mitigation pass</h2>
+        <p>This is an illustrative simulation that nudges each group's selection rate halfway toward the overall average — it does not represent a scientifically retrained model.</p>
+        <div class="grid-2" style="margin-top: 24px;">
+          <div class="panel">
+            <h3>Before / after comparison</h3>
+            <canvas id="chart-mitigation"></canvas>
+          </div>
+          <div class="panel">
+            <h3>What changed</h3>
+            <table class="data-table" id="mitigation-table">
+              <thead><tr><th></th><th>Before</th><th>After</th></tr></thead>
+              <tbody id="mitigation-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FairLens — college social internship project.</span>
+      <span>Educational composite score — not an official fairness certification.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/vendor/chart.umd.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/results.js"></script>
+</body>
+</html>

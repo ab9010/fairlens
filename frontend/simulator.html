@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bias Simulator — FairLens</title>
+<meta name="description" content="Drag two sliders to see how selection rate gaps translate into disparate impact and fairness scores.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/simulator.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="index.html" class="brand"><span class="mark">Fair</span>Lens</a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bias-test.html">Fairness Lab</a></li>
+      <li><a href="simulator.html" class="active">Simulator</a></li>
+      <li><a href="learn.html">Learn</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="bias-test.html" class="nav-cta">Test Your Dataset</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+  <section class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Bias Simulator</p>
+      <h1>Feel how a selection rate gap becomes bias</h1>
+      <p>Move each slider to set how often Group A and Group B receive a positive outcome. Everything below updates instantly using the same formulas the Fairness Lab uses.</p>
+      <span class="tag" data-api-status>Checking backend…</span>
+    </div>
+  </section>
+
+  <section class="section-light">
+    <div class="container sim-grid">
+      <div class="panel">
+        <h3>Group A selection rate</h3>
+        <input type="range" id="slider-a" min="0" max="100" value="70" aria-describedby="value-a">
+        <div class="slider-value" id="value-a">70%</div>
+
+        <h3 style="margin-top: 32px;">Group B selection rate</h3>
+        <input type="range" id="slider-b" min="0" max="100" value="45" aria-describedby="value-b">
+        <div class="slider-value" id="value-b">45%</div>
+
+        <p id="sim-status" class="status-msg info" style="margin-top: 20px;">Calculating…</p>
+      </div>
+
+      <div class="panel">
+        <h3>Live result</h3>
+        <div class="sim-status-band" id="sim-band">—</div>
+        <dl class="field-list">
+          <dt>Selection rate difference</dt><dd id="sim-diff">—</dd>
+          <dt>Disparate impact ratio</dt><dd id="sim-impact">—</dd>
+          <dt>Passes four-fifths rule</dt><dd id="sim-passes">—</dd>
+          <dt>Fairness score</dt><dd id="sim-score">—</dd>
+        </dl>
+        <canvas id="chart-sim" style="margin-top: 18px;"></canvas>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FairLens — college social internship project.</span>
+      <span>Not a certified fairness or compliance tool.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/vendor/chart.umd.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+<script src="js/simulator.js"></script>
+</body>
+</html>
