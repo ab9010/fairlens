@@ -1,8 +1,8 @@
 /* FairLens — shared API client */
 const FairLensAPI = (() => {
-  const BASE = window.location.protocol === "file:"
+  const BASE = window.FAIRLENS_API_BASE || (window.location.protocol === "file:"
     ? "http://localhost:8000/api"
-    : `${window.location.origin}/api`;
+    : `${window.location.origin}/api`);
 
   async function handle(res) {
     let body;

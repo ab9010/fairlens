@@ -159,6 +159,23 @@ The service currently stores uploaded datasets and analyses in memory, so
 they are cleared when the service restarts. This is suitable for the demo;
 use persistent storage before treating it as a production application.
 
+## Deploying the frontend on Cloudflare Pages
+
+The frontend can also be deployed separately on Cloudflare Pages while the
+FastAPI API remains on Render. The frontend is already configured to call
+`https://fairlens.onrender.com/api`; change that URL in
+`frontend/js/config.js` if Render assigns a different service URL.
+
+In Cloudflare Pages, create a project from this GitHub repository with:
+
+- **Framework preset:** None
+- **Build command:** leave blank
+- **Build output directory:** `frontend`
+
+After the Pages deployment finishes, open the generated Pages URL. The
+Render backend must be deployed first, and its CORS policy currently allows
+the Pages frontend to call the API.
+
 ## API endpoints
 
 | Method | Path | Description |
