@@ -148,6 +148,9 @@ FairLens is configured as a single Render web service. FastAPI serves the
 frontend and API from the same host, so the browser uses the deployed origin
 for API requests automatically.
 
+The repository pins Render to Python 3.11 through `runtime.txt`, matching the
+tested Pandas and NumPy dependency versions.
+
 1. Push this project to a Git repository.
 2. In Render, choose **New > Blueprint** and connect the repository.
 3. Render will detect `render.yaml`, install `requirements.txt`, and start
